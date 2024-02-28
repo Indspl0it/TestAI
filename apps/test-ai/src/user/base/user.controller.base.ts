@@ -37,6 +37,9 @@ export class UserControllerBase {
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: User })
+  @swagger.ApiBody({
+    type: UserCreateInput,
+  })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "create",
@@ -49,9 +52,11 @@ export class UserControllerBase {
     return await this.service.createUser({
       data: data,
       select: {
+        age: true,
         createdAt: true,
         firstName: true,
         id: true,
+        lastLogin: true,
         lastName: true,
         roles: true,
         updatedAt: true,
@@ -77,9 +82,11 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
+        age: true,
         createdAt: true,
         firstName: true,
         id: true,
+        lastLogin: true,
         lastName: true,
         roles: true,
         updatedAt: true,
@@ -106,9 +113,11 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
+        age: true,
         createdAt: true,
         firstName: true,
         id: true,
+        lastLogin: true,
         lastName: true,
         roles: true,
         updatedAt: true,
@@ -127,6 +136,9 @@ export class UserControllerBase {
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  @swagger.ApiBody({
+    type: UserUpdateInput,
+  })
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
@@ -144,9 +156,11 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
+          age: true,
           createdAt: true,
           firstName: true,
           id: true,
+          lastLogin: true,
           lastName: true,
           roles: true,
           updatedAt: true,
@@ -181,9 +195,11 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
+          age: true,
           createdAt: true,
           firstName: true,
           id: true,
+          lastLogin: true,
           lastName: true,
           roles: true,
           updatedAt: true,

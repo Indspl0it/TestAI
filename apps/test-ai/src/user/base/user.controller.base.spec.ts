@@ -18,18 +18,22 @@ import { UserService } from "../user.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  age: 42,
   createdAt: new Date(),
   firstName: "exampleFirstName",
   id: "exampleId",
+  lastLogin: new Date(),
   lastName: "exampleLastName",
   password: "examplePassword",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
 const CREATE_RESULT = {
+  age: 42,
   createdAt: new Date(),
   firstName: "exampleFirstName",
   id: "exampleId",
+  lastLogin: new Date(),
   lastName: "exampleLastName",
   password: "examplePassword",
   updatedAt: new Date(),
@@ -37,9 +41,11 @@ const CREATE_RESULT = {
 };
 const FIND_MANY_RESULT = [
   {
+    age: 42,
     createdAt: new Date(),
     firstName: "exampleFirstName",
     id: "exampleId",
+    lastLogin: new Date(),
     lastName: "exampleLastName",
     password: "examplePassword",
     updatedAt: new Date(),
@@ -47,9 +53,11 @@ const FIND_MANY_RESULT = [
   },
 ];
 const FIND_ONE_RESULT = {
+  age: 42,
   createdAt: new Date(),
   firstName: "exampleFirstName",
   id: "exampleId",
+  lastLogin: new Date(),
   lastName: "exampleLastName",
   password: "examplePassword",
   updatedAt: new Date(),
@@ -139,6 +147,7 @@ describe("User", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        lastLogin: CREATE_RESULT.lastLogin.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -151,6 +160,7 @@ describe("User", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          lastLogin: FIND_MANY_RESULT[0].lastLogin.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -174,6 +184,7 @@ describe("User", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        lastLogin: FIND_ONE_RESULT.lastLogin.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -187,6 +198,7 @@ describe("User", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        lastLogin: CREATE_RESULT.lastLogin.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

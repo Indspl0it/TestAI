@@ -8,12 +8,17 @@ generator client {
 }
 
 model User {
-  createdAt DateTime @default(now())
-  firstName String?
-  id        String   @id @default(cuid())
-  lastName  String?
+  age       Int
+  createdAt DateTime  @default(now())
+  firstName String
+  id        String    @id @default(cuid())
+  lastLogin DateTime?
+  lastName  String
   password  String
   roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  updatedAt DateTime  @updatedAt
+  username  String    @unique
+
+  @@index([email, password, age])
+  @@map("Signup")
 }
