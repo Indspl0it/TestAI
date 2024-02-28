@@ -1,9 +1,15 @@
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { IntFilter } from "../../util/IntFilter";
+import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 export type UserWhereInput = {
-  firstName?: StringNullableFilter;
+  age?: IntFilter;
+  createdAt?: DateTimeFilter;
+  firstName?: StringFilter;
   id?: StringFilter;
-  lastName?: StringNullableFilter;
+  lastLogin?: DateTimeNullableFilter;
+  lastName?: StringFilter;
+  updatedAt?: DateTimeFilter;
   username?: StringFilter;
 };

@@ -1,8 +1,10 @@
 import { InputJsonValue } from "../../types";
 
 export type UserUpdateInput = {
-  firstName?: string | null;
-  lastName?: string | null;
+  age?: number;
+  firstName?: string;
+  lastLogin?: Date | null;
+  lastName?: string;
   password?: string;
   roles?: InputJsonValue;
   username?: string;
